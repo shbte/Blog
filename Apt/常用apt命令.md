@@ -1,6 +1,6 @@
 ## Linux apt 命令
 
-~~~bash
+```bash
 列出所有可更新的软件清单命令：sudo apt update
 
 升级软件包：sudo apt upgrade
@@ -29,4 +29,7 @@
 
 列出所有已安装的包的版本信息：apt list --all-versions
 
-~~~
+```
+
+#### 参照：
+> 菜鸟教程：[https://www.runoob.com/linux/linux-comm-apt.html](https://www.runoob.com/linux/linux-comm-apt.html)

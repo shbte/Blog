@@ -1,16 +1,16 @@
 ### 项目构建命令
 
-~~~bash
+```bash
 1、可以对cmake制定参数，build是Makefile生成路径
     cmake -S . -B build (cmake -Bbuild)
     make -C build
 2、执行
     ./bin/cmake_main
-~~~
+```
 
 ### 根目录文件CMakeLists.txt
 
-~~~makefile
+```makefile
 cmake_minimum_required(VERSION 2.8.12)
 
 # 设置cmake项目名(可随意)
@@ -19,14 +19,14 @@ project(Cmake_test)
 # 设置头文件
 # include_directories(include)
 
-# 链接下级文件
+# 添加子目录
 add_subdirectory(example)
 add_subdirectory(work)
 
 # 如果想使用gdb调试功能，这里必须手动设置成Debug模式
 set(CMAKE_BUILD_TYPE Debug)
 
-#设置执行文件输出目录
+# 设置执行文件输出目录
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 # 设置源文件
@@ -40,11 +40,11 @@ ADD_EXECUTABLE(cmake_main ${DIR_SRCS} ${EXAMPLE_DIR_SRCS} ${WORK_DIR_SRCS})
 # 将库链接进可执行文件中
 target_link_libraries(cmake_main example)
 target_link_libraries(cmake_main work)
-~~~
+```
 
 ### 下级目录文件CMakeLists.txt
 
-~~~makefile
+```makefile
 # 设置头文件
 include_directories(include)
 
@@ -53,11 +53,11 @@ file(GLOB DIR_MODULE1 "src/*.cpp")
 
 # 添加库
 add_library(example ${DIR_MODULE1})
-~~~
+```
 
 ### 调试器配置文件
 
-~~~json
+```json
 {
     // 使用 IntelliSense 了解相关属性。 
     // 悬停以查看现有属性的描述。
@@ -91,4 +91,6 @@ add_library(example ${DIR_MODULE1})
 
     ]
 }
-~~~
+```
+#### 参照：
+> LiuZ的博客：[https://blog.csdn.net/weixin_41045354/article/details/109454477](https://blog.csdn.net/weixin_41045354/article/details/109454477)

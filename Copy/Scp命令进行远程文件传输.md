@@ -1,14 +1,14 @@
 ### Linux scp命令
 
-~~~
+```
 Linux scp 命令用于 Linux 之间复制文件和目录。
 scp 是 secure copy 的缩写, scp 是 linux 系统下基于 ssh 登陆进行安全的远程文件拷贝命令。
 scp 是加密的，rcp 是不加密的，scp 是 rcp 的加强版。
-~~~
+```
 
 #### 语法
 
-~~~bash
+```bash
 scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
     [-l limit] [-o ssh_option] [-P port] [-S program]
     [[user@]host1:]file1 [...] [[user@]host2:]file2
@@ -32,21 +32,24 @@ scp [可选参数] file_source file_target
 -o ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，
 -P port：注意是大写的P, port是指定数据传输用到的端口号
 -S program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。
-~~~
+```
 
 #### 文件复制
 
-~~~bash
+```bash
 scp local_file remote_username@remote_ip:remote_folder
 
 scp /home/space/music/1.mp3 root@www.runoob.com:/home/root/others/music
 scp /home/space/music/1.mp3 root@www.runoob.com:/home/root/others/music/001.mp3
-~~~
+```
 
 #### 文件夹复制
 
-~~~bash
+```bash
 scp -r local_folder remote_username@remote_ip:remote_folder
 
 scp -r /home/space/music/ root@www.runoob.com:/home/root/others/
-~~~
+```
+
+#### 参照：
+> 菜鸟教程：[https://www.runoob.com/linux/linux-comm-scp.html](https://www.runoob.com/linux/linux-comm-scp.html)
