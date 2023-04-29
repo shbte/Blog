@@ -1,0 +1,108 @@
+ubuntu@ubuntu ~ $ sudo update-alternatives --config editor 
+[sudo] password for ubuntu: 
+There are 5 choices for the alternative editor (providing /usr/bin/editor).
+
+  Selection    Path                Priority   Status
+------------------------------------------------------------
+* 0            /bin/nano            40        auto mode
+  1            /bin/ed             -100       manual mode
+  2            /bin/nano            40        manual mode
+  3            /usr/bin/code        0         manual mode
+  4            /usr/bin/vim.basic   30        manual mode
+  5            /usr/bin/vim.tiny    15        manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 4
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in manual mode
+ubuntu@ubuntu ~ $ 
+
+设置git代理
+    git config --global http.proxy http://192.168.3.250:7890
+    git config --global https.proxy http://192.168.3.250:7890
+    
+修改最新一次log信息(在master分支中进行可以, 在local分支中出现push不上的情况)
+    git commit --amend --message="xxxx"
+    git push -f origin master
+
+修正某一次commit信息
+    git rebase -i HEAD~3
+        将要修在的commit信息前的pick => edit, 然后:wq保存退出
+
+    git commit --amend
+        进入vim修改commit信息
+    git rebase --continue
+        Successfully rebased and updated refs/heads/master.
+
+    git push -f
+        强制提交
+
+删除远程head分支(删除origin/HEAD符号引用)
+    git remote set-head origin -d
+
+git reset --merge // 回退到merge之前
+git rebase master // 将当前分支基于master
+
+第一次建立连接
+ubuntu@ubuntu DemoQt (master) $ git branch --set-upstream-to=origin/master master 
+Branch 'master' set up to track remote branch 'master' from 'origin'
+
+修改某次commit
+    git rebase -i 8876a66df1ea4a7e911c271b2bd3292ddfa1eca0
+
+    pick：保留该 commit
+    reword：保留该 commit，但我需要修改该commit的 Messag
+    eedit：保留该 commit, 但我要停下来修改该提交(包括修改文件)
+    squash：将该 commit 和前一个 commit 合并
+    fixup：将该 commit 和前一个 commit 合并，但我不要保留该提交的注释信息
+    exec：执行 shell 命令
+    drop：丢弃这个 commit
+
+
+
+Prim operation is for undirected argph only...
+
+ubuntu终端现实git分支
+
+function git_branch {
+   branch="`git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //"`"
+   if [ "${branch}" != "" ];then
+       if [ "${branch}" = "(no branch)" ];then
+           branch="(`git rev-parse --short HEAD`...)"
+       fi
+       echo " ($branch)"
+   fi
+}
+
+export PS1='\u@\h \[\033[01;36m\]\W\[\033[01;32m\]$(git_branch)\[\033[00m\] \$ '
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
